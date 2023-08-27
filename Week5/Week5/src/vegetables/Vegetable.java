@@ -12,12 +12,15 @@ int readyForHarvestInCm;
 boolean isReady;
 Collor collor;
 
-    public GrowthStatus[] GrowVegetable(int lux, int water, int days){
+    public Vegetable(Collor collor, int lux, int water, int days){
+        this.collor = collor;
         this.lux = lux;
         this.water = water;
         this.days = days;
-        return GrowthStatus.values();
+
     }
+
+    public abstract GrowthStatus statusVegetable();
 
     public abstract double getSize();
 
