@@ -1,6 +1,8 @@
 import Database.UserDatabase;
 import User.User;
-import Validation.*;
+import Validation.Age;
+import Validation.Email;
+import Validation.Password;
 
 public class Main {
 
@@ -12,24 +14,26 @@ public class Main {
 
         Age ageValidator = new Age(user1.getAge());
         Email emailValidator = new Email(user1.getEmail());
-        Password passwordValidator = new Password(true,true,true,true,true);
+        Password passwordValidator = new Password(true, true, true, true, true);
 
         if (ageValidator.isValid(user1) && emailValidator.isValid(user1) &&
                 passwordValidator.isValid(user1)) {
-            if (userDatabase.addUser(user1) == true){
-            System.out.println("User 1 added successfully.");
+            if (userDatabase.addUser(user1) == true) {
+                System.out.println("User 1 added successfully.");
+            } else {
+                System.out.println("User 2 username already exist");
             }
-            else { System.out.println("User 2 username already exist");}
         } else {
             System.out.println("User 1 validation failed.");
         }
 
         if (ageValidator.isValid(user2) && emailValidator.isValid(user2) &&
                 passwordValidator.isValid(user2)) {
-            if(userDatabase.addUser(user2) == true ){
-            System.out.println("User 2 added successfully.");
+            if (userDatabase.addUser(user2) == true) {
+                System.out.println("User 2 added successfully.");
+            } else {
+                System.out.println("User 2 username already exist");
             }
-            else { System.out.println("User 2 username already exist");}
         } else {
             System.out.println("User 2 validation failed.");
         }

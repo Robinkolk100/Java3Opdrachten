@@ -1,7 +1,7 @@
 package Validation;
 
 import User.User;
-import java.util.HashSet;
+
 import java.util.Set;
 
 public class Username implements ValidationRule {
