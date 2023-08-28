@@ -4,8 +4,10 @@ import enums.Collor;
 import enums.GrowthStatus;
 
 public class Carrots extends Vegetable {
-    private final static int READYFORHARVESTINCM = 29;
-    private final static int MAXWATERFORGROWTH = 34;
+    private static final int READYFORHARVESTINCM = 29;
+    private static final int MAXWATERFORGROWTH = 34;
+    private static final double LUXMODIFIER = 0.00001;
+    private static final double MMMODIFIER = 0.0095;
 
 
     public Carrots(Collor collor, int lux, int water, int days) {
@@ -14,19 +16,17 @@ public class Carrots extends Vegetable {
 
     @Override
     public GrowthStatus statusVegetable() {
-        double growLux = 0.00001 * lux;
-        double growWater = 0.0095 * water;
+        double growLux = LUXMODIFIER * lux;
+        double growWater = MMMODIFIER * water;
 
         if (days >= 10 && water >= MAXWATERFORGROWTH) {
-            // Geen groei als aan de voorwaarden wordt voldaan
-            return GrowthStatus.BROKEN; // Of een andere geschikte status
+            return GrowthStatus.BROKEN;
         } else {
             double totalGrow = growLux + growWater;
 
             size += totalGrow;
 
             if (size >= READYFORHARVESTINCM) {
-                isReady = true;
                 return GrowthStatus.READY_TO_HARVEST;
             } else {
                 return GrowthStatus.Growing;
@@ -34,10 +34,8 @@ public class Carrots extends Vegetable {
         }
     }
 
-
     @Override
     public double getSize() {
         return size;
     }
-
 }

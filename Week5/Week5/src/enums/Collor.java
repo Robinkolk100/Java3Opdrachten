@@ -1,7 +1,6 @@
 package enums;
 
-public enum Collor
-{
+public enum Collor {
     RED,
     ORANGE,
     GREEN,

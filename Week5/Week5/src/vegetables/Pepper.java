@@ -8,6 +8,8 @@ public class Pepper extends Vegetable {
     private static final int MAX_DAYS_WITH_RAIN = 6;
     private static final int MAX_RAIN_MM = 48;
     private static final int MIN_LUX_FOR_GROWTH = 7398;
+    private static final double LUXMODIFIER = 0.000001;
+    private static final double MMMODIFIER = 0.0015;
 
     public Pepper(Collor collor, int lux, int water, int days) {
         super(collor, lux, water, days);
@@ -15,10 +17,10 @@ public class Pepper extends Vegetable {
 
     @Override
     public GrowthStatus statusVegetable() {
-        double growLux = 0.000001 * lux;
-        double growWater = 0.0015 * water;
+        double growLux = LUXMODIFIER * lux;
+        double growWater = MMMODIFIER * water;
 
-        size += growLux + growWater;  // Direct toevoegen aan grootte
+        size += growLux + growWater;
 
         if (days >= MAX_DAYS_WITH_RAIN && water >= MAX_RAIN_MM) {
             return GrowthStatus.BROKEN;
