@@ -14,10 +14,10 @@ public class Email implements ValidationRule {
 
     @Override
     public boolean isValid(User user) {
-        return isValidEmail(email);
+        return isValidEmail(user.getEmail());
     }
 
-    private boolean isValidEmail(String email) {
+    public boolean isValidEmail(String email) {
         String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);

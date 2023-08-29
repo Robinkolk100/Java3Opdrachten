@@ -12,6 +12,7 @@ public class Age implements ValidationRule {
 
     @Override
     public boolean isValid(User user) {
+        age = user.getAge();
         return age >= MIN_AGE;
     }
 }
